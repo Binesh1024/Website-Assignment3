@@ -1,4 +1,6 @@
-/* General Styles */
+
+ 
+ /* General Styles */
 body, html {
   margin: 0;
   padding: 0;
@@ -25,6 +27,11 @@ header {
   font-weight: bold; /* Bold for emphasis */
   color: #1c2d5a; /* Darker blue */
   margin-bottom: 15px; /* Space between title and links */
+  font-family: 'Poppins', sans-serif;
+  
+ 
+  
+  letter-spacing: 1px; 
 }
 
 /* Navigation Links */
@@ -34,9 +41,11 @@ header {
   gap: 40px;
 }
 
-.nav-links li {
+.nav-links li a{
   margin: 0;
+  font-weight: bold;
 }
+
 
 .nav-links a {
   text-decoration: none;
@@ -50,14 +59,14 @@ header {
 
 /* Active Link Styling */
 .nav-links a.active {
-  background-color: #e8f0ff;
+  background-color: #89b0f9;
   color: #1c2d5a;
 }
 
 /* Hover Effect for Links */
 .nav-links a:hover {
-  background-color: #f0f4f7;
-  color: #1c2d5a;
+  background-color: #326fdf;
+  color: #ffffff;
 }
 
 
@@ -78,16 +87,71 @@ nav ul li a {
   font-weight: bold;
 }
 
-/* Hero Section */
+.mobile-menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  .site-title {
+      font-size: 1.8rem;
+  }
+
+  .mobile-menu-toggle {
+      display: block;
+  }
+
+  .nav-links {
+      display: none;
+      flex-direction: column;
+        
+      position: absolute;
+      top: 60px; /* Adjust based on your header height */
+      right: 0;
+      background-color: #fff;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.show {
+      display: flex;
+  }
+
+  .nav-links li {
+      width: 100%;
+      text-align: left;
+  }
+
+  .nav-links a {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2rem;
+  }
+}
+
+
+/* Hero Section */        
 .hero {
   text-align: center;
-  padding: 50px 20px;
-  background-color: #f0f4f7;
+  padding: 60px 30px;
+  background-image:linear-gradient(to bottom, #4f8ff7, #ffffff);
 }
+
+
+
+
 
 .hero h1 {
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 10px;  
 }
 
 .hero p {
@@ -158,6 +222,13 @@ nav ul li a {
   color: #555;
 }
 
+.feature-icon {
+  font-size: 48px; /* Adjust the size of the icon */
+  color: #1c2d5a; /* Change the color of the icon */
+  margin-bottom: 15px; /* Add some space below the icon */
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card {
@@ -167,7 +238,7 @@ nav ul li a {
 
 @media (max-width: 480px) {
   .card {
-      width: 100%; /* Full width on very small screens */
+      width: 80%; /* Full width on very small screens */
   }
 }
 
@@ -176,6 +247,7 @@ nav ul li a {
 .about {
   padding: 50px 20px;
   background-color: #f0f4f7;
+  background-image:linear-gradient(to bottom,#ffffff  , #4f8ff7);
   text-align: center;
 }
 
@@ -200,21 +272,24 @@ nav ul li a {
   margin: 0 10px;
   background-color: #e0e4e8;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .tab-button.active {
-  background-color: #4f8ff7;
+  background-color: #1E40AF;
   color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow to active button */
 }
 
 .tab-button:hover {
   background-color: #4f8ff7;
   color: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adds a deeper shadow on hover */
 }
+
 
 .tab-content {
   display: flex;
@@ -222,6 +297,7 @@ nav ul li a {
   align-items: center;
   padding: 20px;
   background-color: #fff;
+  
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
@@ -316,7 +392,7 @@ nav ul li a {
 
 /* Footer */
 footer {
-  background-color: #fff;
+  background-color: #EFF6FF;
   padding: 20px;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -325,11 +401,15 @@ footer {
 .footer-content {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap; /* Allow sections to wrap */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-section {
   flex: 1;
   padding: 20px;
+  min-width: 300px; /* Minimum width to keep items aligned on smaller screens */
 }
 
 .footer-section form {
@@ -337,10 +417,12 @@ footer {
   flex-direction: column;
 }
 
-.footer-section form input, .footer-section form textarea {
+.footer-section form input,
+.footer-section form textarea {
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ddd;
+  width: 100%; /* Ensure inputs take up full width */
 }
 
 .footer-section form button {
@@ -364,4 +446,49 @@ footer {
 
 .social-icons img {
   width: 24px;
+}
+
+/* Responsive Design */
+
+/* Tablets and smaller devices (768px and below) */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center;
+   
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+    text-align: center; /* Center the text for smaller screens */
+    padding: 10px;
+  }
+
+  .footer-section form input,
+  .footer-section form textarea {
+    width: 100%; /* Full width for form inputs */
+  }
+  
+  .social-icons {
+    justify-content: center; /* Keep social icons centered */
+  }
+}
+
+/* Extra small devices (480px and below) */
+@media (max-width: 480px) {
+  .footer-section h4 {
+    font-size: 1.2em; /* Slightly smaller font size */
+  }
+
+  .footer-section form input,
+  .footer-section form textarea {
+    font-size: 0.9em;
+    width: 90%;
+    /* Adjust font size for smaller inputs */
+  }
+
+  .footer-section form button {
+    font-size: 0.9em;
+    width: 95%; /* Smaller button font size */
+  }
 }

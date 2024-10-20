@@ -39,3 +39,50 @@ function showTab(event, tabId) {
     // Add active class to the clicked button
     event.currentTarget.classList.add('active');
 }
+
+
+
+
+
+document.getElementById('mobile-toggle').addEventListener('click', function() {
+    const navLinks = document.querySelector('.nav-links');
+    const toggleIcon = this.querySelector('i'); // Get the <i> element inside the toggle button
+
+    // Toggle the visibility of the nav-links
+    navLinks.classList.toggle('show');
+
+    // Change the icon based on whether the menu is open or closed
+    if (navLinks.classList.contains('show')) {
+        toggleIcon.classList.remove('bi-list');
+        toggleIcon.classList.add('bi-x'); // Switch to 'x' icon when menu is open
+    } else {
+        toggleIcon.classList.remove('bi-x');
+        toggleIcon.classList.add('bi-list'); // Switch back to 'list' icon when menu is closed
+    }
+});
+
+
+
+
+// Select all like buttons and dislike buttons
+const likeButtons = document.querySelectorAll('.like-btn');
+const dislikeButtons = document.querySelectorAll('.dislike-btn');
+
+// Function to handle click events for likes
+likeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const likeCount = this.querySelector('.like-count');
+        let currentLikes = parseInt(likeCount.innerText);
+        likeCount.innerText = currentLikes + 1 + " Likes"; // Increment likes
+    });
+});
+
+// Function to handle click events for dislikes
+dislikeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const dislikeCount = this.querySelector('.dislike-count');
+        let currentDislikes = parseInt(dislikeCount.innerText);
+        dislikeCount.innerText = currentDislikes + 1 + " Dislikes"; // Increment dislikes
+    });
+});
+
